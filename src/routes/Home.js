@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
-function Home() {
+function Home(props) {
   const [text, setText] = useState("");
   function onChange(e) {
     setText(e.target.value);
@@ -21,4 +22,10 @@ function Home() {
   );
 }
 
-export default Home;
+// mapStateToProps
+function mapStateToProps(state) {
+  // Home에 store로부터 state 가져다줌
+  return { toDos: state };
+}
+
+export default connect(mapStateToProps)(Home);
